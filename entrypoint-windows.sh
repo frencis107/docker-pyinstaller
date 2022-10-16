@@ -38,7 +38,11 @@ fi # [ -f requirements.txt ]
 echo "$@"
 
 if [[ "$@" == "" ]]; then
-    pyinstaller --clean -y --dist ./dist/windows --workpath /tmp *.spec
+    files=$(ls *.spec)
+    for filename in $files
+    do
+      pyinstaller --clean -y --dist ./dist/windows --workpath /tmp filename
+    done
     chown -R --reference=. ./dist/windows
 else
     sh -c "$@"
