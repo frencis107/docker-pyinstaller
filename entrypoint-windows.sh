@@ -41,7 +41,7 @@ if [[ "$@" == "" ]]; then
     files=$(ls *.spec)
     for filename in $files
     do
-      pyinstaller --clean -y --dist ./dist/windows --workpath /tmp filename
+      pyinstaller --clean -y --dist ./dist/windows --workpath /tmp $filename
     done
     chown -R --reference=. ./dist/windows
 else
